@@ -15,7 +15,7 @@ Dizionario contenente
 
 Esempio:
 
-```JSON
+```python
 res = {
     "vectX" : [],
     "nIter" : 150,
@@ -30,7 +30,7 @@ Dizionario suddiviso per ogni ogni metodo usato, ognuno di questi conterrà un u
 
 Esempio:
 
-```JSON
+```python
 resTot = {
     "Jacoby" : {
         "spa1" : [
