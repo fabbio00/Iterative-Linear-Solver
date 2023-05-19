@@ -51,7 +51,8 @@ Aggiornato a 19/05/2023
 
 - [x] Restituire i tempi di calcolo 
 - [ ] Errore assoluto (se serve)
-- [ ] Grafici
+- [ ] Grafici sulle matrici usate
+- [ ] Grafici sui risultati
 - [ ] Metodo preliminare per i metodi che lo hanno (es. jacobi che dice subito se la matrice è risolvibile o meno )
 - [ ] Fare file di python eseguibile
 - [ ] Sistemare e capire come raggruppare il codice
