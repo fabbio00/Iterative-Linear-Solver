@@ -1,6 +1,37 @@
 # Progetto Metodi del Calcolo Scientifico
 
-Costruzione di una libreria per la risoluzione di sistemi lineari tramite metodi iterativi
+Costruzione di una libreria per la risoluzione di sistemi lineari tramite i seguenti metodi iterativi:
+
+- Metodo di Jacobi
+- Metodo di Gauß-Seidel
+- Metodo del Gradiente
+- Metodo del Gradiente coniugato
+
+La **matrice A** viene acquisita leggendo i  dati da un file `.mtx`
+
+Il **vettore soluzione x** è un vettore composto da tutti $1$
+
+Il **vettore b** viene calcolato dal vettore soluzione x col seguente calcolo $b=Ax$ 
+
+Il **vettore x di partenza** usato da tutti i metodi è un vettore della stessa grandezza della matrice A e con tutti i valori a zero
+
+I metodi si e arrestarsi qualora la k-esima iterata $x^{(k)}$ soddisfa il seguente **criterio di arresto**:
+
+$\frac{||Ax^{(k)} − b||}{||b||} < tol$
+
+Sono state controllate volta per volta 4 **tolleranze** diverse, ovvero:
+$tol = [10^{−4}, 10^{−6}, 10^{−8}, 10^{−10}]$
+
+Inoltre viene fatto un controllo sul **numero massimo di iterazioni** che se superato viene segnalata la mancata convergenza $(k>maxIter)$ dove $maxIter = 2000$
+
+
+## Metodo di Jacobi
+
+## Metodo di Gauß-Seidel
+
+## Metodo del Gradiente
+
+## Metodo del Gradiente coniugato
 
 ## Risultati
 
@@ -47,25 +78,25 @@ resTot = {
 
 
 ## ToDo
-Aggiornato a 19/05/2023
+Aggiornato a 21/05/2023
 
 ### Generico
 
 - [x] Restituire i tempi di calcolo 
 - [ ] Errore assoluto (se serve)
 - [ ] Grafici sui risultati
-- [ ] Metodo preliminare per i metodi che lo hanno (es. jacobi che dice subito se la matrice è risolvibile o meno )
+- [x] Metodo preliminare per i metodi che lo hanno (es. jacobi che dice subito se la matrice è risolvibile o meno )
 - [ ] Fare file di python eseguibile
 - [x] Sistemare e capire come raggruppare il codice
 
-### Teoremi
+### Teoremi & Controlli
 
-- [ ] File controll
-- [ ] capire come fare le varie print
+- [x] File controll
+- [x] capire come fare le varie print
 
 ### Grafici
 
 - [ ] Grafici sulle matrici usate (per far capire quanto sono sparse)
 - [ ] Istogramma del numero di iterazioni per una data tolleranza
 - [ ] Istogramma dei tempi per una data tolleranza
-- [ ] decrescita dell'errore relativo 
+- [ ] Decrescita dell'errore relativo 
