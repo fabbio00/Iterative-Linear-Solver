@@ -49,10 +49,23 @@ resTot = {
 ## ToDo
 Aggiornato a 19/05/2023
 
+### Generico
+
 - [x] Restituire i tempi di calcolo 
 - [ ] Errore assoluto (se serve)
-- [ ] Grafici sulle matrici usate
 - [ ] Grafici sui risultati
 - [ ] Metodo preliminare per i metodi che lo hanno (es. jacobi che dice subito se la matrice è risolvibile o meno )
 - [ ] Fare file di python eseguibile
-- [ ] Sistemare e capire come raggruppare il codice
+- [x] Sistemare e capire come raggruppare il codice
+
+### Teoremi
+
+- [ ] File controll
+- [ ] capire come fare le varie print
+
+### Grafici
+
+- [ ] Grafici sulle matrici usate (per far capire quanto sono sparse)
+- [ ] Istogramma del numero di iterazioni per una data tolleranza
+- [ ] Istogramma dei tempi per una data tolleranza
+- [ ] decrescita dell'errore relativo 
