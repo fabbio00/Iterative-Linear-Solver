@@ -1,38 +1,31 @@
 import numpy as np
+from scipy.sparse import tril
+from scipy.sparse.linalg import spsolve_triangular
+from datetime import datetime
 
 
-def solve(self, mtxA, vectB, tol, maxIter):
-    # Creating utils variable
-    mtxP = mtxA.copy()
-    mtxN = mtxA.copy()
-    for i in range(len(mtxA)):
-        for j in range(len(mtxA)):
-            if (i <= j):
-                mtxN[i][j] = 0
-            else:
-                mtxN[i][j] = -mtxN[i][j]
-                mtxP[i][j] = 0
-
+def solve(mtxA, vectB, vectX, tol):
+    start = datetime.now()
+    # Variabili
+    maxIter = 20000
+    mtxP = tril(mtxA, format="csr")
     k = 0
-    vectX = np.random.rand(mtxA.shape[1])
-    residual = np.subtract(vectB, mtxA.dot(vectX))
+    vectX1 = np.zeros(mtxA.shape[0])
+    residual = vectB - mtxA.dot(vectX1)
 
-    while (np.linalg.norm(residual) > tol) and k < maxIter:
+    # Funzione
+    while np.linalg.norm(residual)/np.linalg.norm(vectB) >= tol and k < maxIter:
         k += 1
-        for i in range(len(vectX)):
-            xi = vectB[i]
-            for j in range(len(vectX)):
-                xi -= mtxA[i][j] * vectX[j]
-            vectX[i] = xi/mtxA[i][i]
-        residual = np.subtract(vectB, mtxA.dot(vectX))
-        if k % 100 == 0:
-            print(k, end="\t")
-        if k % 1000 == 0:
-            print()
-            print(np.linalg.norm(residual))
+        vectX1 = vectX1 + spsolve_triangular(mtxP, residual, lower=True)
+        residual = vectB - mtxA.dot(vectX1)
 
-    if (np.linalg.norm(residual) > tol):
-        print("CIAO")
-    else:
-        print(tol)
-        print(np.linalg.norm(residual))
+    end = datetime.now()
+    delta = end - start
+    # Risultato
+    res = {
+        "vectX": vectX1,
+        "nIter": k,
+        "time": int(delta.total_seconds() * 1e6),
+        "eRel": np.linalg.norm(np.subtract(vectX1, vectX))/np.linalg.norm(vectX)
+    }
+    return res
