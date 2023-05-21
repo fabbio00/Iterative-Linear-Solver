@@ -1,11 +1,10 @@
-import gradiente as gr
-import gauss_seidel as gs
 import numpy as np
 from scipy.io import mmread
 import json
-# from scipy.sparse import csr_matrix, csc_matrix, tril
-# from scipy.sparse.linalg import spsolve_triangular
-
+import gradiente as gr
+import gauss_seidel as gs
+import jacoby_mcs as ja
+import gradiente_coniugato as grc
 
 # Import Data
 data = {
@@ -27,15 +26,12 @@ for x in data:
 # Tolleranze
 tols = [10**(-4), 10**(-6), 10**(-8), 10**(-10)]
 
-# Import solvers library
-# import jacoby_mcs as ja
-# import gradiente_coniugato as grc
-
+# Import solvers library in a dictionary
 solver = {}
-# solver["Jacoby"] = ja
+solver["Jacoby"] = ja
 solver["Gauss-Seidel"] = gs
 solver["Gradiente"] = gr
-# solver["Gradiente Coniugato"] = grc
+solver["Gradiente Coniugato"] = grc
 
 # Calculate all results
 resTot = {}
@@ -44,8 +40,7 @@ for metod in solver:
     for el in data:
         resTot[metod][el] = []
         for tol in tols:
-            res = solver[metod].solve(
-                mtxA=data[el]["A"], vectB=data[el]["b"], tol=tol, vectX=data[el]["x"])
+            res = solver[metod].solve(data[el]["A"], data[el]["b"], data[el]["x"], tol)
             resTot[metod][el].append({
                 "tol": tol,
                 "nIter": res["nIter"],
