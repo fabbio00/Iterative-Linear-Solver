@@ -2,6 +2,7 @@ import gradiente as gr
 import gauss_seidel as gs
 import numpy as np
 from scipy.io import mmread
+import json
 # from scipy.sparse import csr_matrix, csc_matrix, tril
 # from scipy.sparse.linalg import spsolve_triangular
 
@@ -52,3 +53,6 @@ for metod in solver:
                 "eRel": res["eRel"]
             })
 print(resTot)
+
+out_file = open("Results.json", "w")
+json.dump(resTot, out_file, indent = 4)
