@@ -20,9 +20,6 @@ def solve(mtxA, vectB, vectX, tol):
 
         vectX1 = vectX1 + alpha * residual
 
-        # Compressed version
-        # vectX = vectX + (residual.T.dot(residual) / residual.T.dot(mtxA.dot(residual))) * residual
-
         residual = vectB - mtxA.dot(vectX1)
 
     end = datetime.now()
