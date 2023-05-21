@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.sparse.linalg import eigsh
 class GradC:
     def __init__(self):
         pass
@@ -24,3 +25,11 @@ class GradC:
     
     def relative_error(self, x, xk1):
         return np.linalg.norm(np.subtract(xk1, x))/np.linalg.norm(x)
+    
+    def convergenza(self, A):
+        conv = True
+        if(not np.allclose(A.toarray(), A.toarray().T)):
+            conv = False
+        if(not eigsh(A, k=1, which='LM')[0] > 0):
+            conv = False
+        return conv

@@ -17,10 +17,10 @@ class Jacoby:
     def relative_error(self, x, xk1):
         return np.linalg.norm(np.subtract(xk1, x))/np.linalg.norm(x)
     
-    def convergenza(A):
+    def convergenza(self, A):
         conv = True
-        for i in A:
-            if(abs(A[i][i]) <= sum(A[i,:i])+sum(A[i,i+1:])):
+        for i in range(A.shape[0]):
+            if(abs(A[i, i]) <= np.sum(A[i,:i])+np.sum(A[i,i+1:])):
                 conv = False
                 break
         return conv
