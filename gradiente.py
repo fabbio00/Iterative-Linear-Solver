@@ -1,8 +1,12 @@
 import numpy as np
 from datetime import datetime
-
+import control as cr
 
 def solve(mtxA, vectB, vectX, tol):
+    if(cr.is_sim_pos(mtxA)):
+        print("La matrice A è simmetrica e definita positiva, quindi converge per ogni valore del vettore iniziale")
+    else:
+        print("La matrice A non è simmetrica o definita positiva")
     start = datetime.now()
 
     # Variabili
@@ -29,6 +33,6 @@ def solve(mtxA, vectB, vectX, tol):
         "vectX": vectX1,
         "nIter": k,
         "time": int(delta.total_seconds() * 1e6),
-        "eRel": np.linalg.norm(np.subtract(vectX1, vectX))/np.linalg.norm(vectX)
+        "eRel": cr.relative_error(vectX, vectX1)
     }
     return res

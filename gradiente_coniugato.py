@@ -1,8 +1,12 @@
 import numpy as np
-from scipy.sparse.linalg import eigsh
 from datetime import datetime
+import control as cr
 
 def solve(A, b, x, tol):
+    if(cr.is_sim_pos(A)):
+        print("La matrice A è simmetrica e definita positiva, quindi converge in al più " + str(A.shape[0]) + " iterazioni")
+    else:
+        print("La matrice A non è simmetrica o definita positiva")
     start = datetime.now()
     niter = 0
     new_vector = np.asarray([0]*len(x))
@@ -28,17 +32,6 @@ def solve(A, b, x, tol):
         "vectX": new_vector,
         "nIter": niter,
         "time": int(delta.total_seconds() * 1e6),
-        "eRel": relative_error(x, new_vector)
+        "eRel": cr.relative_error(x, new_vector)
     }
     return res
-
-def relative_error(x, xk1):
-    return np.linalg.norm(np.subtract(xk1, x))/np.linalg.norm(x)
-
-def convergenza(A):
-    conv = True
-    if(not np.allclose(A.toarray(), A.toarray().T)):
-        conv = False
-    if(not eigsh(A, k=1, which='LM')[0] > 0):
-        conv = False
-    return conv

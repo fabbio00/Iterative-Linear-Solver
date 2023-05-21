@@ -1,10 +1,15 @@
 import numpy as np
+import control as cr
 from scipy.sparse import tril
 from scipy.sparse.linalg import spsolve_triangular
 from datetime import datetime
 
 
 def solve(mtxA, vectB, vectX, tol):
+    if(cr.row_diagonal_dominance(mtxA)):
+        print("La matrice A è a dominanza diagonale per righe, quindi converge")
+    else:
+        print("La matrice A non è a dominanza diagonale per righe, quindi non è detto che converga")
     start = datetime.now()
     # Variabili
     maxIter = 20000
@@ -26,6 +31,6 @@ def solve(mtxA, vectB, vectX, tol):
         "vectX": vectX1,
         "nIter": k,
         "time": int(delta.total_seconds() * 1e6),
-        "eRel": np.linalg.norm(np.subtract(vectX1, vectX))/np.linalg.norm(vectX)
+        "eRel": cr.relative_error(vectX, vectX1)
     }
     return res

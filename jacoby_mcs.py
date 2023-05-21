@@ -1,7 +1,12 @@
 import numpy as np
+import control as cr
 from datetime import datetime
     
 def solve(A, b, x, tol):
+    if(cr.row_diagonal_dominance(A)):
+        print("La matrice A è a dominanza diagonale per righe, quindi converge")
+    else:
+        print("La matrice A non è a dominanza diagonale per righe, quindi non è detto che converga")
     start = datetime.now()
     niter = 0
     new_vector = np.asarray([0]*len(x))
@@ -20,17 +25,6 @@ def solve(A, b, x, tol):
         "vectX": new_vector,
         "nIter": niter,
         "time": int(delta.total_seconds() * 1e6),
-        "eRel": relative_error(x, new_vector)
+        "eRel": cr.relative_error(x, new_vector)
     }
     return res
-
-def relative_error(x, xk1):
-    return np.linalg.norm(np.subtract(xk1, x))/np.linalg.norm(x)
-
-def convergenza(A):
-    conv = True
-    for i in range(A.shape[0]):
-        if(abs(A[i, i]) <= np.sum(A[i,:i])+np.sum(A[i,i+1:])):
-            conv = False
-            break
-    return conv
