@@ -20,6 +20,9 @@ def solve(A, b, x, tol):
 
     end = datetime.now()
     delta = end - start
+    if niter > 20000:
+        if np.linalg.norm(residual)/np.linalg.norm(b) > tol:
+            print("superato il numero massimo di iterazioni")
     # Risultato
     res = {
         "vectX": new_vector,

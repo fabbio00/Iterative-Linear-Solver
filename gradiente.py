@@ -28,6 +28,9 @@ def solve(mtxA, vectB, vectX, tol):
 
     end = datetime.now()
     delta = end - start
+    if k > 20000:
+        if np.linalg.norm(residual)/np.linalg.norm(vectB) > tol:
+            print("superato il numero massimo di iterazioni")
     # Risultato
     res = {
         "vectX": vectX1,
