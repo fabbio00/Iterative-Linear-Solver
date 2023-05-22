@@ -2,8 +2,9 @@ import numpy as np
 from datetime import datetime
 import control as cr
 
+
 def solve(mtxA, vectB, vectX, tol):
-    if(cr.is_sim_pos(mtxA)):
+    if (cr.is_sim_pos(mtxA)):
         print("La matrice A è simmetrica e definita positiva, quindi converge per ogni valore del vettore iniziale")
     else:
         print("La matrice A non è simmetrica o definita positiva")
@@ -15,7 +16,7 @@ def solve(mtxA, vectB, vectX, tol):
     residual = vectB - mtxA.dot(vectX1)
 
     # Funzione
-    while np.linalg.norm(residual)/np.linalg.norm(vectB) >= tol and k < 20000:
+    while np.linalg.norm(residual)/np.linalg.norm(vectB) >= tol and k <= 20000:
         k += 1
         y = mtxA.dot(residual)
         a = residual.T.dot(residual)
@@ -29,7 +30,7 @@ def solve(mtxA, vectB, vectX, tol):
     end = datetime.now()
     delta = end - start
     if k > 20000:
-        if np.linalg.norm(residual)/np.linalg.norm(vectB) > tol:
+        if np.linalg.norm(residual)/np.linalg.norm(vectB) >= tol:
             print("superato il numero massimo di iterazioni")
     # Risultato
     res = {

@@ -2,9 +2,11 @@ import numpy as np
 from datetime import datetime
 import control as cr
 
+
 def solve(A, b, x, tol):
-    if(cr.is_sim_pos(A)):
-        print("La matrice A è simmetrica e definita positiva, quindi converge in al più " + str(A.shape[0]) + " iterazioni")
+    if (cr.is_sim_pos(A)):
+        print("La matrice A è simmetrica e definita positiva, quindi converge in al più " +
+              str(A.shape[0]) + " iterazioni")
     else:
         print("La matrice A non è simmetrica o definita positiva")
     start = datetime.now()
@@ -24,11 +26,11 @@ def solve(A, b, x, tol):
 
         residual = b - A.dot(new_vector)
         niter = niter + 1
-    
+
     end = datetime.now()
     delta = end - start
     if niter > 20000:
-        if np.linalg.norm(residual)/np.linalg.norm(b) > tol:
+        if np.linalg.norm(residual)/np.linalg.norm(b) >= tol:
             print("superato il numero massimo di iterazioni")
     # Risultato
     res = {

@@ -19,7 +19,7 @@ def solve(mtxA, vectB, vectX, tol):
     residual = vectB - mtxA.dot(vectX1)
 
     # Funzione
-    while np.linalg.norm(residual)/np.linalg.norm(vectB) >= tol and k < maxIter:
+    while np.linalg.norm(residual)/np.linalg.norm(vectB) >= tol and k <= maxIter:
         k += 1
         vectX1 = vectX1 + spsolve_triangular(mtxP, residual, lower=True)
         residual = vectB - mtxA.dot(vectX1)
