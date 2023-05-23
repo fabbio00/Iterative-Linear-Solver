@@ -29,7 +29,22 @@ Inoltre viene fatto un controllo sul **numero massimo di iterazioni** che se sup
 
 ## Metodo di Gauß-Seidel
 
+### Psudocodice
+
+1. $r^{(k)} = b − Ax^{(k)}$
+2. Sostituzione in avanti Py = r^{(k)}
+3. $x^{(k+1)} = y^{(k)} + y$
+
 ## Metodo del Gradiente
+
+### Psudocodice
+
+1. $r^{(k)} = b -Ax^{(k)}$
+2. $y^{(k)} = Ar^{(k)}$
+3. $a = (r^{(k)})^tr^{(k)}$
+4. $b = (r^{(k)})^ty^{(k)}$
+5. $\alpha_k = a/b$
+6. $x^{(k+1)} = r^{(k)} \alpha_kr^{(k)}$
 
 ## Metodo del Gradiente coniugato
 
@@ -82,8 +97,7 @@ Aggiornato a 21/05/2023
 
 ### Generico
 
-- [x] Restituire i tempi di calcolo 
-- [ ] Errore assoluto (se serve)
+- [x] Restituire i tempi di calcolo
 - [ ] Grafici sui risultati
 - [x] Metodo preliminare per i metodi che lo hanno (es. jacobi che dice subito se la matrice è risolvibile o meno )
 - [ ] Fare file di python eseguibile
@@ -96,7 +110,11 @@ Aggiornato a 21/05/2023
 
 ### Grafici
 
-- [ ] Grafici sulle matrici usate (per far capire quanto sono sparse)
-- [ ] Istogramma del numero di iterazioni per una data tolleranza
-- [ ] Istogramma dei tempi per una data tolleranza
+- [x] Grafici sulle matrici usate (per far capire quanto sono sparse)
+- [x] Istogramma del numero di iterazioni per una data tolleranza di ogni matrice
+- [x] Istogramma dei tempi per una data tolleranza di ogni matrice
+- [x] Istogramma dell'errore relatico per una data tolleranza di ogni matrice
+- [ ] Istogramma del numero di iterazioni per una data tolleranza di ogni metodo
+- [ ] Istogramma dei tempi per una data tolleranza di ogni metodo
+- [ ] Istogramma dell'errore relatico per una data tolleranza di ogni metodo
 - [ ] Decrescita dell'errore relativo 
