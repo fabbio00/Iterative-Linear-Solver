@@ -82,8 +82,7 @@ Aggiornato a 21/05/2023
 
 ### Generico
 
-- [x] Restituire i tempi di calcolo 
-- [ ] Errore assoluto (se serve)
+- [x] Restituire i tempi di calcolo
 - [ ] Grafici sui risultati
 - [x] Metodo preliminare per i metodi che lo hanno (es. jacobi che dice subito se la matrice è risolvibile o meno )
 - [ ] Fare file di python eseguibile
@@ -96,7 +95,9 @@ Aggiornato a 21/05/2023
 
 ### Grafici
 
-- [ ] Grafici sulle matrici usate (per far capire quanto sono sparse)
+- [x] Grafici sulle matrici usate (per far capire quanto sono sparse)
 - [ ] Istogramma del numero di iterazioni per una data tolleranza
 - [ ] Istogramma dei tempi per una data tolleranza
 - [ ] Decrescita dell'errore relativo 
+- [ ] Residuo
+- [ ] Tempi

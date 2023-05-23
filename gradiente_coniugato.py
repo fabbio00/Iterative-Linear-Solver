@@ -16,7 +16,7 @@ def solve(A, b, x, tol):
     dir = residual.copy()
     while np.linalg.norm(residual)/np.linalg.norm(b) >= tol and niter <= 20000:
         y = A.dot(dir)
-        z = A.dot(residual)
+        #z = A.dot(residual)
         ak = (np.dot(dir, residual)) / (np.dot(dir, y))
         new_vector = new_vector + (ak * dir)
         residual = b - A.dot(new_vector)
@@ -24,7 +24,7 @@ def solve(A, b, x, tol):
         bk = (np.dot(dir, w)) / (np.dot(dir, y))
         dir = residual - (bk*dir)
 
-        residual = b - A.dot(new_vector)
+        #residual = b - A.dot(new_vector)
         niter = niter + 1
 
     end = datetime.now()
