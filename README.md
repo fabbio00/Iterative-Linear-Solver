@@ -17,15 +17,31 @@ Il **vettore x di partenza** usato da tutti i metodi è un vettore della stessa 
 
 I metodi si e arrestarsi qualora la k-esima iterata $x^{(k)}$ soddisfa il seguente **criterio di arresto**:
 
-$\frac{||Ax^{(k)} − b||}{||b||} < tol$
+$\frac{||r^{(k)}||}{||b||} < tol$
+
+Dove $r^{(k)}$ è il residuo alla k-esima iterazione calcolato come $r^{(k)}=Ax^{(k)} − b$
 
 Sono state controllate volta per volta 4 **tolleranze** diverse, ovvero:
 $tol = [10^{−4}, 10^{−6}, 10^{−8}, 10^{−10}]$
 
 Inoltre viene fatto un controllo sul **numero massimo di iterazioni** che se superato viene segnalata la mancata convergenza $(k>maxIter)$ dove $maxIter = 2000$
 
-
 ## Metodo di Jacobi
+
+### Pseudocodice
+
+1. $x^{(k+1)} = x^{(k)} + P^{-1}r^{(k)}$
+
+Dove $P^{-1}$ è una matrice diagonale costruita nel seguente modo:
+
+$$
+P^{-1}:=\left[\begin{array}{cccc}
+1 / a_{1,1} & 0 & \cdots & 0 \\
+0 & 1 / a_{2,2} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1 / a_{n, n}
+\end{array}\right]
+$$
 
 ## Metodo di Gauß-Seidel
 
@@ -34,6 +50,17 @@ Inoltre viene fatto un controllo sul **numero massimo di iterazioni** che se sup
 1. $r^{(k)} = b − Ax^{(k)}$
 2. Sostituzione in avanti Py = r^{(k)}
 3. $x^{(k+1)} = y^{(k)} + y$
+
+Dove la matrice $P$ è costruita nel seguente modo:
+
+$$
+P:=\left[\begin{array}{cccc}
+a_{1,1} & 0 & \cdots & 0 \\
+a_{2,1} & a_{2,2} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n, 1} & a_{n, 2} & \cdots & a_{n, n}
+\end{array}\right]
+$$
 
 ## Metodo del Gradiente
 
@@ -47,6 +74,18 @@ Inoltre viene fatto un controllo sul **numero massimo di iterazioni** che se sup
 6. $x^{(k+1)} = r^{(k)} \alpha_kr^{(k)}$
 
 ## Metodo del Gradiente coniugato
+
+### Pseudocode
+
+1. $r^{(k)}=b−Ax^{(k)}$
+2. $y^{(k)} = Ad^{(k)}$
+3. $z^{(k)} = Ar^{(k)}$
+4. $\alpha_k = (d^{(k)} · r^{(k)})/(d^{(k)} · y^{(k)})$
+5. $x^{(k+1)} = x^{(k)} + \alpha_kd^{(k)}$
+6. $r^{(k+1)}=b−Ax^{(k+1)}$
+7. $w^{(k)} = Ar^{(k+1)}$
+8. $\beta_k = (d^{(k)} · w^{(k)})/(d^{(k)} · y^{(k)})$
+9. $d^{(k+1)} = r^{(k+1)} − \beta_kd^{(k)}$
 
 ## Risultati
 
