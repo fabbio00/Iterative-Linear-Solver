@@ -132,7 +132,7 @@ resTot = {
 
 ## ToDo
 
-Aggiornato a 21/05/2023
+Aggiornato a 27/05/2023
 
 ### Generico
 
@@ -153,9 +153,8 @@ Aggiornato a 21/05/2023
 - [x] Istogramma del numero di iterazioni per una data tolleranza di ogni matrice
 - [x] Istogramma dei tempi per una data tolleranza di ogni matrice
 - [x] Istogramma dell'errore relatico per una data tolleranza di ogni matrice
-- [ ] Istogramma del numero di iterazioni per una data tolleranza di ogni metodo
+- [x] Istogramma del numero di iterazioni per una data tolleranza di ogni metodo
 - [x] Istogramma dei tempi per una data tolleranza di ogni metodo
-- [ ] Istogramma dell'errore relatico per una data tolleranza di ogni metodo
+- [x] Istogramma dell'errore relatico per una data tolleranza di ogni metodo
 - [x] Decrescita dell'errore relativo
 - [x] Residuo
-- [ ] Tempi
