@@ -11,7 +11,7 @@ La **matrice A** viene acquisita leggendo i  dati da un file `.mtx`
 
 Il **vettore soluzione x** è un vettore composto da tutti $1$
 
-Il **vettore b** viene calcolato dal vettore soluzione x col seguente calcolo $b=Ax$ 
+Il **vettore b** viene calcolato dal vettore soluzione x col seguente calcolo $b=Ax$
 
 Il **vettore x di partenza** usato da tutti i metodi è un vettore della stessa grandezza della matrice A e con tutti i valori a zero
 
@@ -130,8 +130,8 @@ resTot = {
 }
 ```
 
-
 ## ToDo
+
 Aggiornato a 21/05/2023
 
 ### Generico
@@ -154,8 +154,8 @@ Aggiornato a 21/05/2023
 - [x] Istogramma dei tempi per una data tolleranza di ogni matrice
 - [x] Istogramma dell'errore relatico per una data tolleranza di ogni matrice
 - [ ] Istogramma del numero di iterazioni per una data tolleranza di ogni metodo
-- [ ] Istogramma dei tempi per una data tolleranza di ogni metodo
+- [x] Istogramma dei tempi per una data tolleranza di ogni metodo
 - [ ] Istogramma dell'errore relatico per una data tolleranza di ogni metodo
-- [ ] Decrescita dell'errore relativo 
-- [ ] Residuo
-- [ ] Tempi 
+- [x] Decrescita dell'errore relativo
+- [x] Residuo
+- [ ] Tempi
