@@ -95,8 +95,8 @@ $$
 
 - `README.md`
   - Descrizione tecnica del progetto
-- `jacoby.py`
-  - Implementazione dell’algoritmo risolutivo di Jacoby
+- `jacobi.py`
+  - Implementazione dell’algoritmo risolutivo di Jacobi
 - `gauss_seidel.py`
   - Implementazione dell’algoritmo risolutivo di Gauß-Seidel
 - `gradiente.py`
@@ -143,7 +143,7 @@ Esempio:
 
 ```python
 resTot = {
-    "Jacoby" : {
+    "Jacobi" : {
         "spa1" : [
             {
                 "tol" : 0.0001,

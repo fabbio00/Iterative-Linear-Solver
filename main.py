@@ -3,7 +3,7 @@ from scipy.io import mmread
 import json
 import gradiente as gr
 import gauss_seidel as gs
-import jacoby as ja
+import jacobi as ja
 import gradiente_coniugato as grc
 
 # Import Data
@@ -28,7 +28,7 @@ tols = [10**(-4), 10**(-6), 10**(-8), 10**(-10)]
 
 # Import solvers library in a dictionary
 solver = {}
-solver["Jacoby"] = ja
+solver["Jacobi"] = ja
 solver["Gauss-Seidel"] = gs
 solver["Gradiente"] = gr
 solver["Gradiente Coniugato"] = grc
