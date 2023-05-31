@@ -3,7 +3,7 @@ from scipy.io import mmread
 import json
 import gradiente as gr
 import gauss_seidel as gs
-import jacoby_mcs as ja
+import jacoby as ja
 import gradiente_coniugato as grc
 
 # Import Data
@@ -40,7 +40,8 @@ for metod in solver:
     for el in data:
         resTot[metod][el] = []
         for tol in tols:
-            res = solver[metod].solve(data[el]["A"], data[el]["b"], data[el]["x"], tol)
+            res = solver[metod].solve(
+                data[el]["A"], data[el]["b"], data[el]["x"], tol)
             resTot[metod][el].append({
                 "tol": tol,
                 "nIter": res["nIter"],
@@ -50,4 +51,4 @@ for metod in solver:
 print(resTot)
 
 out_file = open("Results.json", "w")
-json.dump(resTot, out_file, indent = 4)
+json.dump(resTot, out_file, indent=4)
