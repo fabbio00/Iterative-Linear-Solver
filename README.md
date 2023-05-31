@@ -45,6 +45,10 @@ $$
 
 ## Metodo di Gauß-Seidel
 
+### Idea alla base
+
+$x^{(k+1)}_i =\frac{1}{a_{i,i}} ( b_i – a_{i,1}x^{(k+1)}_1 − \cdots  – a_{i,i−1} x^{(k+1)}_{i−1}  − a_{i,i+1} x^{(k)}_{i+1}  − \cdots – a_{i,n}x^{(k)}_n)$
+
 ### Psudocodice
 
 1. $r^{(k)} = b − Ax^{(k)}$
