@@ -6,9 +6,6 @@ from scipy.sparse.linalg import spsolve_triangular
 def relative_error(x, xk1):
     return np.linalg.norm(np.subtract(xk1, x))/np.linalg.norm(x)
 
-    # Risultato
-    return charts
-
 
 def jacobi(A, b, x, tol):
     charts = {
@@ -19,12 +16,16 @@ def jacobi(A, b, x, tol):
     new_vector = np.asarray([0]*len(x))
     inverted_p_matrix = 1/A.diagonal()
     residual = b - A.dot(new_vector)
+    charts["residual_chart"].append(
+        np.linalg.norm(residual)/np.linalg.norm(b))
+    charts["errrel_chart"].append(relative_error(x, new_vector))
+
     while np.linalg.norm(residual)/np.linalg.norm(b) >= tol and niter <= 20000:
         new_vector = new_vector + (inverted_p_matrix * (residual))
+        residual = b - A.dot(new_vector)
         charts["residual_chart"].append(
             np.linalg.norm(residual)/np.linalg.norm(b))
         charts["errrel_chart"].append(relative_error(x, new_vector))
-        residual = b - A.dot(new_vector)
         niter = niter + 1
 #    return {"iter": niter, "err_rel": relative_error(x, new_vector)}
     if niter > 20000:
@@ -45,15 +46,18 @@ def gauss_seidel(mtxA, vectB, vectX, tol):
     k = 0
     vectX1 = np.zeros(mtxA.shape[0])
     residual = vectB - mtxA.dot(vectX1)
+    charts["residual_chart"].append(
+        np.linalg.norm(residual)/np.linalg.norm(vectB))
+    charts["errrel_chart"].append(relative_error(vectX, vectX1))
 
     # Funzione
     while np.linalg.norm(residual)/np.linalg.norm(vectB) >= tol and k <= maxIter:
         k += 1
         vectX1 = vectX1 + spsolve_triangular(mtxP, residual, lower=True)
+        residual = vectB - mtxA.dot(vectX1)
         charts["residual_chart"].append(
             np.linalg.norm(residual)/np.linalg.norm(vectB))
         charts["errrel_chart"].append(relative_error(vectX, vectX1))
-        residual = vectB - mtxA.dot(vectX1)
 
     if k > 20000:
         if np.linalg.norm(residual)/np.linalg.norm(vectB) > tol:
@@ -71,6 +75,9 @@ def gradiente(mtxA, vectB, vectX, tol):
     k = 0
     vectX1 = np.zeros(mtxA.shape[0])
     residual = vectB - mtxA.dot(vectX1)
+    charts["residual_chart"].append(
+        np.linalg.norm(residual)/np.linalg.norm(vectB))
+    charts["errrel_chart"].append(relative_error(vectX, vectX1))
 
     # Funzione
     while np.linalg.norm(residual)/np.linalg.norm(vectB) >= tol and k <= 20000:
@@ -81,13 +88,16 @@ def gradiente(mtxA, vectB, vectX, tol):
         alpha = a/b
 
         vectX1 = vectX1 + alpha * residual
+        residual = vectB - mtxA.dot(vectX1)
         charts["residual_chart"].append(
             np.linalg.norm(residual)/np.linalg.norm(vectB))
         charts["errrel_chart"].append(relative_error(vectX, vectX1))
-        residual = vectB - mtxA.dot(vectX1)
+
     if k > 20000:
         if np.linalg.norm(residual)/np.linalg.norm(vectB) >= tol:
             print("superato il numero massimo di iterazioni")
+    # Risultato
+    return charts
 
 
 def gradiente_coniugato(A, b, x, tol):
@@ -99,6 +109,9 @@ def gradiente_coniugato(A, b, x, tol):
     new_vector = np.asarray([0]*len(x))
     residual = b - A.dot(new_vector)
     dir = residual.copy()
+    charts["residual_chart"].append(
+        np.linalg.norm(residual)/np.linalg.norm(b))
+    charts["errrel_chart"].append(relative_error(x, new_vector))
     while np.linalg.norm(residual)/np.linalg.norm(b) >= tol and niter <= 20000:
         y = A.dot(dir)
         z = A.dot(residual)
@@ -108,10 +121,10 @@ def gradiente_coniugato(A, b, x, tol):
         w = A.dot(residual)
         bk = (np.dot(dir, w)) / (np.dot(dir, y))
         dir = residual - (bk*dir)
+        residual = b - A.dot(new_vector)
         charts["residual_chart"].append(
             np.linalg.norm(residual)/np.linalg.norm(b))
         charts["errrel_chart"].append(relative_error(x, new_vector))
-        residual = b - A.dot(new_vector)
         niter = niter + 1
 
     if niter > 20000:
