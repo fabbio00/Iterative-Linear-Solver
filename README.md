@@ -87,6 +87,28 @@ $$
 8. $\beta_k = (d^{(k)} · w^{(k)})/(d^{(k)} · y^{(k)})$
 9. $d^{(k+1)} = r^{(k+1)} − \beta_kd^{(k)}$
 
+## Descrizione rapida dei file
+
+- `README.md`
+  - Descrizione tecnica del progetto
+- `jacoby.py`
+  - Implementazione dell’algoritmo risolutivo di Jacoby
+- `gauss_seidel.py`
+  - Implementazione dell’algoritmo risolutivo di Gauß-Seidel
+- `gradiente.py`
+  - Implementazione dell’algoritmo risolutivo del Gradiente
+- `gradiente_coniugato.py`
+  - Implementazione dell’algoritmo risolutivo del Gradiente Coniugato
+- `control.py`
+  - Definizione di diverse funzioni di usate per effettuare dei controlli nei diversi algoritmi realizzati
+- `main.py`
+  - File eseguibile dove vengono calcolati i vettori soluzione richiesti e si salvano i risultati
+- `Progetto_MCS.ipynb`
+  - Notebook in cui vengono esaminate le matrici usate e analizzati i risultati ottenuti
+- `utils.py`
+  - Definizione di funzioni utili all’analisi dei risultati
+
+
 ## Risultati
 
 ### Risultati di ogni funzione
