@@ -48,7 +48,7 @@ $$
 ### Psudocodice
 
 1. $r^{(k)} = b − Ax^{(k)}$
-2. Sostituzione in avanti Py = r^{(k)}
+2. Sostituzione in avanti $Py = r^{(k)}$
 3. $x^{(k+1)} = y^{(k)} + y$
 
 Dove la matrice $P$ è costruita nel seguente modo:
