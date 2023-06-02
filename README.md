@@ -77,6 +77,12 @@ $$
 5. $\alpha_k = a/b$
 6. $x^{(k+1)} = r^{(k)} \alpha_kr^{(k)}$
 
+Versione compatto per il calcolo di $\alpha_k$
+
+$$
+\alpha_k=\frac{(r^{(k)})^tr^{(k)}}{(r^{(k)})^tAr^{(k)}}
+$$
+
 ## Metodo del Gradiente coniugato
 
 ### Pseudocode
