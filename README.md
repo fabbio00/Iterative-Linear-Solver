@@ -118,7 +118,6 @@ $$
 - `utils.py`
   - Definizione di funzioni utili all’analisi dei risultati
 
-
 ## Risultati
 
 ### Risultati di ogni funzione
