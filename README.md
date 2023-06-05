@@ -1,4 +1,4 @@
-# Progetto Metodi del Calcolo Scientifico
+# Progetto Metodi del Calcolo Scientifico ~ Libreria di metodi iterativi
 
 Costruzione di una libreria per la risoluzione di sistemi lineari tramite i seguenti metodi iterativi:
 
@@ -160,32 +160,3 @@ resTot = {
     }
 }
 ```
-
-## ToDo
-
-Aggiornato a 27/05/2023
-
-### Generico
-
-- [x] Restituire i tempi di calcolo
-- [ ] Grafici sui risultati
-- [x] Metodo preliminare per i metodi che lo hanno (es. jacobi che dice subito se la matrice è risolvibile o meno )
-- [ ] Fare file di python eseguibile
-- [x] Sistemare e capire come raggruppare il codice
-
-### Teoremi & Controlli
-
-- [x] File controll
-- [x] capire come fare le varie print
-
-### Grafici
-
-- [x] Grafici sulle matrici usate (per far capire quanto sono sparse)
-- [x] Istogramma del numero di iterazioni per una data tolleranza di ogni matrice
-- [x] Istogramma dei tempi per una data tolleranza di ogni matrice
-- [x] Istogramma dell'errore relatico per una data tolleranza di ogni matrice
-- [x] Istogramma del numero di iterazioni per una data tolleranza di ogni metodo
-- [x] Istogramma dei tempi per una data tolleranza di ogni metodo
-- [x] Istogramma dell'errore relatico per una data tolleranza di ogni metodo
-- [x] Decrescita dell'errore relativo
-- [x] Residuo
