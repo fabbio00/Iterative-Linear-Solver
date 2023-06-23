@@ -154,7 +154,7 @@ def printTime(time):
     elif tmp[1] != 0:
         res = str(tmp[1]) + "." + str(round(tmp[0]/100)) + "ms"
     else:
-        res = str(tmp[0]) + "u03BCs"
+        res = str(tmp[0]) + "\u03BCs"
 
     # print(str(tmp[3]) + " : " + str(tmp[2]) + " : " + str(tmp[1]) + " : " + str(tmp[0]))
     # print(res)
